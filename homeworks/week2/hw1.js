@@ -5,5 +5,4 @@ function printStars(n){
     }
     console.log(star)
 }
-
 printStars(5);
