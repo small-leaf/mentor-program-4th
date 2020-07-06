@@ -17,4 +17,13 @@ API 的全名為（ Application Programming Interface），簡單來說就是溝
 
 
 ## 假設你現在是個餐廳平台，需要提供 API 給別人串接並提供基本的 CRUD 功能，包括：回傳所有餐廳資料、回傳單一餐廳資料、刪除餐廳、新增餐廳、更改餐廳，你的 API 會長什麼樣子？請提供一份 API 文件。
+* Restaurant API 
+Base URL：https://smallleaf/restaurant.com
 
+| 說明     | Method | path       | 參數                   | 範例             |
+|--------|--------|------------|----------------------|----------------|
+| 獲取所有餐廳資訊 | GET    | /restaurant    | _limit:限制回傳資料數量           | /restaurant?_limit=5 |
+| 獲取單一餐廳資訊 | GET    | /restaurant/:id | 無                    | /restaurant/10      |
+| 新增餐廳   | POST   | /restaurant     | name: 餐廳名稱 | 無              |
+| 刪除餐廳   | DELETE   | /restaurant/:id     | 無 | 無              |
+| 更改餐廳資訊   | PATCH   | /restaurant/:id     | name: 餐廳名稱| 無              |
