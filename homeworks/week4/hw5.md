@@ -19,11 +19,184 @@ API 的全名為（ Application Programming Interface），簡單來說就是溝
 ## 假設你現在是個餐廳平台，需要提供 API 給別人串接並提供基本的 CRUD 功能，包括：回傳所有餐廳資料、回傳單一餐廳資料、刪除餐廳、新增餐廳、更改餐廳，你的 API 會長什麼樣子？請提供一份 API 文件。
 * Restaurant API 
 Base URL：https://smallleaf/restaurant.com
+### 簡易操作表格
 
 | 說明     | Method | path       | 參數                   | 範例             |
 |--------|--------|------------|----------------------|----------------|
-| 獲取所有餐廳資訊 | GET    | /restaurant    | _limit:限制回傳資料數量           | /restaurant?_limit=5 |
-| 獲取單一餐廳資訊 | GET    | /restaurant/:id | 無                    | /restaurant/10      |
-| 新增餐廳   | POST   | /restaurant     | name: 餐廳名稱 | 無              |
-| 刪除餐廳   | DELETE   | /restaurant/:id     | 無 | 無              |
-| 更改餐廳資訊   | PATCH   | /restaurant/:id     | name: 餐廳名稱| 無              |
+| 獲取所有餐廳資訊 | GET    | /restaurants   | _limit:限制回傳資料數量           | /restaurants?_limit=5 |
+| 獲取單一餐廳資訊 | GET    | /restaurants/:id | 無                    | /restaurants/7      |
+| 新增餐廳   | POST   | /restaurants     | name: 餐廳名稱 | 無              |
+| 刪除餐廳   | DELETE   | /restaurants/:id     | 無 | 無              |
+| 更改餐廳資訊   | PATCH   | /restaurants/:id     | name: 餐廳名稱| 無              |
+
+### API 操作文件
+* GET /restaurant
+
+**Resource URL**
+
+`https://smallleaf/restaurant.com/restaurants`
+
+**Resource Information**
+
+| | |
+|---|---|
+|Response formats|JSON|
+|Requires authentication?|No|
+
+**Parameters**
+
+|Name|Required|Description|Default Value|Example|
+|---|---|---|---|---|
+|`limit`|optional	|總共顯示幾筆餐廳，最小值：10，最大值：50|/restaurants?limit=5|/restaurants?limit=10|
+
+**Example Request**
+
+`https://smallleaf/restaurant.com/restaurants/limit?=5`
+
+**Example Response**
+
+```
+[
+  {
+    "id" : 1,
+    "name" : "老饕客"
+  },
+  {
+    "id" : 2,
+    "name" : "大饕客"
+  },
+  {
+    "id" : 3,
+    "name" : "小饕客"
+  },
+  {
+    "id" : 4,
+    "name" : "中饕客"
+  },
+  {
+    "id" : 5,
+    "name" : "隨便饕"
+  },
+] 
+```
+
+* GET /restaurants/<id>
+  
+**Resource URL**
+
+`https://smallleaf/restaurant.com/restaurants/<restaurant id>`
+  
+**Resource Information**
+
+| | |
+|---|---|
+|Response formats|JSON|
+|Requires authentication?|No|
+
+**Parameters**
+
+None
+
+**Example Request**
+
+`GET https://smallleaf/restaurant.com/restaurants/5`
+
+**Example Response**
+
+```
+{
+  "id" : 5,
+  "name" : "蒜好吃"
+},
+```
+
+* DELETE /restaurants/<id>
+  
+**Resource URL**
+
+`https://smallleaf/restaurant.com/restaurants/<restaurant ID>`  
+
+**Resource Information**  
+
+| | |
+|---|---|
+|Response formats|JSON|
+|Requires authentication?|Yes|
+
+**Parameters**
+
+None
+
+**Example Request**
+
+`DELETE https://smallleaf/restaurant.com/restaurants/15`
+
+**Example Response**
+
+`204`
+
+* POST /restaurants
+
+**Resource URL**
+
+`https://smallleaf/restaurant.com/restaurants/<restaurant ID>`
+
+**Resource Information**  
+
+| | |
+|---|---|
+|Response formats|JSON|
+|Requires authentication?|Yes|
+
+**Parameters**
+
+|Name|Required|Description|Default Value|Example|
+|---|---|---|---|---|
+|`id`|required	|餐廳 id| |NaN|
+|`name`|required	|餐廳名稱。最大字數限制：10 個字| |NaN|
+
+**Example Request**
+
+`POST https://smallleaf/restaurant.com/restaurants/id=7&name='蒜好吃'`
+
+**Example Response**
+
+```
+{
+    "id" : 7,
+    "name" : "蒜好吃"
+  },
+```
+
+* PATCH /restaurants/<id>
+
+**Resource URL**
+
+`https://smallleaf/restaurant.com/restaurants/<restaurant ID>`
+
+**Resource Information**  
+
+| | |
+|---|---|
+|Response formats|JSON|
+|Requires authentication?|Yes|
+
+**Parameters**
+
+|Name|Required|Description|Default Value|Example|
+|---|---|---|---|---|
+|`id`|required	|餐廳 id| |NaN|
+|`name`|required	|餐廳名稱。最大字數限制：10 個字| |NaN|
+
+**Example Request**
+
+`PATCH https://smallleaf/restaurant.com/restaurants/id=7&name='醬好吃'`
+
+**Example Response**
+
+```
+{
+    "id" : 7,
+    "name" : "醬好吃"
+  },
+```
