@@ -79,6 +79,8 @@ Base URL：https://smallleaf/restaurant.com
   },
 ] 
 ```
+---
+
 
 * GET /restaurants/<id>
   
@@ -109,6 +111,7 @@ None
   "name" : "蒜好吃"
 },
 ```
+---
 
 * DELETE /restaurants/<id>
   
@@ -134,6 +137,9 @@ None
 **Example Response**
 
 `204`
+
+---
+
 
 * POST /restaurants
 
@@ -167,6 +173,7 @@ None
     "name" : "蒜好吃"
   },
 ```
+---
 
 * PATCH /restaurants/<id>
 
